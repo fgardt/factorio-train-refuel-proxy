@@ -1,0 +1,31 @@
+---------------------------------------------------------------------------------------------------
+Version: 2.0.1
+Date: 2023-01-23
+  Bugfixes:
+    - only use conventional-changelog-conventionalcommits-factorio
+    - remove duplicate changelog entry
+    - removed @semantic-release/changelog
+---------------------------------------------------------------------------------------------------
+Version: 2.0.0
+Date: 2023-01-23
+  Features:
+    - generating actually good changelogs now
+  Bugfixes:
+    - remove newlines from old changelog (again)
+---------------------------------------------------------------------------------------------------
+Version: 1.2.0
+Date: 2023-01-23
+  Features:
+    - generate changelogs without newlines
+  Bugfixes:
+    - remove newlines from old changelog
+---------------------------------------------------------------------------------------------------
+Version: 1.1.0
+Date: 2023-01-23
+  Features:
+    - added some text to the readme
+---------------------------------------------------------------------------------------------------
+Version: 1.0.0
+Date: 2023-01-23
+  Features:
+    - initial CI release test
