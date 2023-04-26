@@ -89,7 +89,7 @@ local function check_locomotive(info)
     end
 
     -- create a new item-request-proxy and request more fuel
-    info.request_proxy = info.surface.create_entity({
+    info.request_proxy = info.entity.surface.create_entity({
         name = "item-request-proxy",
         position = info.entity.position,
         force = info.entity.force,
@@ -181,7 +181,6 @@ local function register_locomotive(entity)
     global.locomotives[entity.unit_number] = {
         entity = entity,
         burner = burner,
-        surface = entity.surface,
         last_fuel = burner.currently_burning,
         fuel_inv = fuel_inv,
         next_unit = next_unit,

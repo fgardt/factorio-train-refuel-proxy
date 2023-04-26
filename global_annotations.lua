@@ -3,7 +3,6 @@
 ---@class LocomotiveInfo Storing all necessary details about a locomotive
 ---@field entity LuaEntity The locomotive entity
 ---@field burner LuaBurner The burner of the locomotive
----@field surface LuaSurface The surface the locomotive is on
 ---@field last_fuel LuaItemPrototype? The last burnt fuel of this locomotive
 ---@field fuel_inv LuaInventory The fuel inventory of the locomotive
 ---@field request_proxy LuaEntity? The item_request_proxy to provide this locomotive with new fuel
