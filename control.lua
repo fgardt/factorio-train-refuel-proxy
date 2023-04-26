@@ -94,6 +94,7 @@ local function check_locomotive(info)
         position = info.entity.position,
         force = info.entity.force,
         target = info.entity,
+        raise_built = true,
         modules = {
             [info.last_fuel.name] = info.last_fuel.stack_size,
         }
