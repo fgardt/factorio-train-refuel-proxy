@@ -3,6 +3,7 @@
   "version": "1.0.2",
   "title": "Stranded Train Refuel Logistics",
   "author": "fgardt",
+  "contact": "https://discord.gg/58BTYg8dey",
   "homepage": "https://github.com/fgardt/factorio-train-refuel-proxy",
   "description": "Automatically refuel stranded trains with construction robots.",
   "factorio_version": "1.1",
