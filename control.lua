@@ -108,7 +108,7 @@ local function run_checks(_)
             return
         end
 
-        local info = global.locomotives[global.next_check --[[@as uint]]]
+        local info = global.locomotives[ global.next_check --[[@as uint]] ]
         global.next_check = info.next_unit
 
         check_locomotive(info)
@@ -141,9 +141,9 @@ local function update_timings()
     global.recalculate_timings = false
 end
 
-script.on_nth_tick(1800, function(_) 
+script.on_nth_tick(1800, function(_)
     --if global.recalculate_timings then
-        update_timings()
+    update_timings()
     --end
 end)
 
@@ -200,9 +200,9 @@ local function init(clear)
     global.rate = parse_rate_setting()
     update_timings()
 
-    if clear then
+    if clear or global.count == 0 then
         for _, surface in pairs(game.surfaces) do
-            for _, entity in pairs(surface.find_entities_filtered{type = "locomotive"}) do
+            for _, entity in pairs(surface.find_entities_filtered({ type = "locomotive" })) do
                 register_locomotive(entity)
             end
         end
@@ -210,8 +210,15 @@ local function init(clear)
 end
 
 script.on_init(function() init(true) end)
-script.on_load(init)
-script.on_configuration_changed(function() init(true) end)
+script.on_configuration_changed(function() init(false) end)
+
+script.on_load(function()
+    if not global then return end
+    if global.count == 0 or global.rate == 0 then return end
+    if not global.ticks_per_check then return end
+
+    script.on_nth_tick(global.ticks_per_check, run_checks)
+end)
 
 ---@param event
 ---| EventData.on_robot_built_entity
@@ -227,7 +234,7 @@ end
 local ev = defines.events
 script.on_event(ev.on_runtime_mod_setting_changed, init)
 
-script.on_event(ev.on_robot_built_entity, placed_locomotive, {{filter = "type", type = "locomotive"}})
-script.on_event(ev.script_raised_revive, placed_locomotive, {{filter = "type", type = "locomotive"}})
-script.on_event(ev.script_raised_built, placed_locomotive, {{filter = "type", type = "locomotive"}})
-script.on_event(ev.on_built_entity, placed_locomotive, {{filter = "type", type = "locomotive"}})
+script.on_event(ev.on_robot_built_entity, placed_locomotive, { { filter = "type", type = "locomotive" } })
+script.on_event(ev.script_raised_revive, placed_locomotive, { { filter = "type", type = "locomotive" } })
+script.on_event(ev.script_raised_built, placed_locomotive, { { filter = "type", type = "locomotive" } })
+script.on_event(ev.on_built_entity, placed_locomotive, { { filter = "type", type = "locomotive" } })
